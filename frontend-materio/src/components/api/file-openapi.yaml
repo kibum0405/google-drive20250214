@@ -1,0 +1,337 @@
+---
+paths:
+  '/files/{id}//downloadfile':
+    summary: DownloadFile operation on files
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  description: filename of this DownloadFile
+                  type: string
+                path:
+                  description: path of this DownloadFile
+                  type: string
+                downloadedBy:
+                  description: downloadedBy of this DownloadFile
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: DownloadFile name
+          schema:
+            type: string
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: DownloadFile Operation
+      operationId: DownloadFile
+      summary: DownloadFile
+      description: DownloadFile
+  '/files/{id}//uploadfile':
+    summary: UploadFile operation on files
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  description: filename of this UploadFile
+                  type: string
+                path:
+                  description: path of this UploadFile
+                  type: string
+                size:
+                  description: size of this UploadFile
+                  type: integer
+                uploadedBy:
+                  description: uploadedBy of this UploadFile
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: UploadFile name
+          schema:
+            type: string
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: UploadFile Operation
+      operationId: UploadFile
+      summary: UploadFile
+      description: UploadFile
+  /files:
+    summary: Global operations on files
+    get:
+      tags:
+        - files
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/File'
+              examples:
+                files_json:
+                  value:
+                    - id: A string
+                      name: A string
+                      path: A string
+                      size: 1
+                      uploadedBy: A string
+                      downloadedCount: 1
+                      shared: value
+          description: Get list of files
+      operationId: GetFile
+      summary: Get list of files
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+            examples:
+              '1':
+                value:
+                  id: A string
+                  name: A string
+                  path: A string
+                  size: 1
+                  uploadedBy: A string
+                  downloadedCount: 1
+                  shared: value
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: Changed File
+      operationId: Post File
+      summary: Post File
+  '/files/{id}':
+    summary: Specific operation on files
+    get:
+      parameters:
+        - examples:
+            A string:
+              value: A string
+          name: id
+          description: File name
+          schema:
+            type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: files with specified id
+      operationId: GetFileById
+      summary: Get File by id
+      description: Get File by id
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/File'
+            examples:
+              '1':
+                value:
+                  id: A string
+                  name: A string
+                  path: A string
+                  size: 1
+                  uploadedBy: A string
+                  downloadedCount: 1
+                  shared: value
+        required: true
+      parameters:
+        - examples:
+            '1':
+              value: 1
+          name: id
+          description: File name
+          schema:
+            type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: Changed File
+      operationId: PatchFile
+      summary: Patch existing File
+    parameters:
+      - name: id
+        description: File id
+        schema:
+          type: string
+        in: path
+        required: true
+  '/files/{id}/':
+    summary: ReceiveFile operation on files
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  description: filename of this ReceiveFile
+                  type: string
+                path:
+                  description: path of this ReceiveFile
+                  type: string
+                receivedBy:
+                  description: receivedBy of this ReceiveFile
+                  type: string
+            examples: null
+      parameters:
+        - name: id
+          description: ReceiveFile name
+          schema:
+            type: string
+          in: path
+          required: true
+          examples: null
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+              examples:
+                '1':
+                  value:
+                    id: A string
+                    name: A string
+                    path: A string
+                    size: 1
+                    uploadedBy: A string
+                    downloadedCount: 1
+                    shared: value
+          description: ReceiveFile Operation
+      operationId: ReceiveFile
+      summary: ReceiveFile
+      description: ReceiveFile
+openapi: 3.0.2
+info:
+  title: File
+  version: 0.0.1
+  description: API definition of file
+  contact:
+    name: creator's name
+    url: 'http://creator.homepage.address'
+    email: creator@creator.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/licenses/MIT'
+components:
+  schemas:
+    File:
+      title: Root Type for File
+      description: The root of the File type's schema.
+      type: object
+      properties:
+        id:
+          description: id of this File
+          type: string
+        name:
+          description: name of this File
+          type: string
+        path:
+          description: path of this File
+          type: string
+        size:
+          description: size of this File
+          type: integer
+        uploadedBy:
+          description: uploadedBy of this File
+          type: string
+        downloadedCount:
+          description: downloadedCount of this File
+          type: integer
+        shared:
+          description: shared of this File
+          type: string
+tags:
+  - name: File
+    description: File resource
